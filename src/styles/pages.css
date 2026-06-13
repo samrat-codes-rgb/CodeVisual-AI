@@ -1,0 +1,161 @@
+/* ============================================
+   PAGES.CSS — Page Layouts
+   ============================================ */
+
+.page-container {
+  flex: 1; padding: 16px 16px 72px; overflow-y: auto;
+  min-height: calc(100vh - 56px);
+}
+
+.page-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px;
+}
+.page-header h1 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+
+/* ── Onboarding ────────────────────────────── */
+.onboarding-page {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; padding: 24px 20px;
+  background: var(--bg-primary);
+}
+.onboarding-hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; flex: 1; gap: 12px; padding-bottom: 16px;
+}
+.onboarding-logo {
+  width: 72px; height: 72px; border-radius: 18px;
+  background: var(--accent); display: flex; align-items: center;
+  justify-content: center; font-size: 36px; margin-bottom: 4px;
+  color: #fff;
+}
+.onboarding-hero h1 { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); }
+.onboarding-hero p { color: var(--text-muted); font-size: var(--text-sm); line-height: 1.6; max-width: 280px; }
+.onboarding-features { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+.feature-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  text-align: left;
+}
+.feature-icon { font-size: 20px; flex-shrink: 0; }
+.feature-item strong { display: block; font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); }
+.feature-item span { font-size: 11px; color: var(--text-muted); }
+.onboarding-footer { flex-shrink: 0; padding-top: 12px; }
+.step-indicators { display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; }
+.step-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong);
+  transition: all 0.2s;
+}
+.step-dot.active { width: 20px; border-radius: 3px; background: var(--accent); }
+.step-dot.done { background: var(--success); }
+
+/* ── Pages ─────────────────────────────────── */
+.dashboard-page,
+.problems-page,
+.problem-detail-page,
+.visualizer-page,
+.tutor-page,
+.roadmap-page,
+.playground-page,
+.analytics-page,
+.profile-page,
+.interview-page,
+.interview-active {
+  animation: fadeIn 0.15s ease;
+}
+
+.problem-detail-header { margin-bottom: 12px; }
+.problem-detail-header h1 {
+  font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; line-height: 1.4;
+}
+.problem-meta-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+.viz-canvas-card canvas { display: block; width: 100% !important; border-radius: var(--radius-md); }
+
+/* ── Roadmap ───────────────────────────────── */
+.roadmap-path { display: flex; flex-direction: column; }
+.roadmap-node { padding: 4px 0; }
+.roadmap-connector {
+  width: 2px; height: 16px; background: var(--border);
+  margin-left: 26px;
+}
+.roadmap-node-content {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  transition: background 0.15s;
+}
+.roadmap-node.unlocked .roadmap-node-content:hover { background: var(--bg-secondary); }
+.roadmap-icon-wrap {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.roadmap-node-body { flex: 1; min-width: 0; }
+
+/* ── Desktop ───────────────────────────────── */
+@media (min-width: 768px) {
+  #app { border-left: none; border-right: none; }
+  .page-container {
+    padding: 24px 32px;
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    min-height: 100vh;
+  }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .quick-actions { grid-template-columns: repeat(4, 1fr); }
+  .badges-grid { grid-template-columns: repeat(4, 1fr); }
+  .ds-selector { grid-template-columns: repeat(6, 1fr); }
+  
+  #problem-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .playground-grid-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .tutor-page,
+  .interview-page,
+  .interview-active {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .onboarding-page {
+    max-width: 500px;
+    margin: 60px auto;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-card);
+    min-height: auto;
+    height: auto;
+    padding: 32px;
+  }
+}
+
+.learn-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.learn-left-column,
+.learn-right-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .learn-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 16px;
+    align-items: start;
+  }
+}
